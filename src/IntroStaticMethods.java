@@ -58,7 +58,7 @@ public class IntroStaticMethods
 
         for(int rep = 1; rep <= reps; rep++)
         {
-            sayMessage(msg);
+            sayMessage(msg); // sayMessage("Hello Bill");
         }
 
         System.out.println();
@@ -87,6 +87,8 @@ public class IntroStaticMethods
             System.out.printf("%6.2f\t%6.2f\n",cTemp, ctoF(cTemp));
         }
 
+        msg = getMessage(in);
+        System.out.println("read msg as : " + msg);
 
 
     }  // This is the end of the main method
@@ -159,14 +161,26 @@ public class IntroStaticMethods
      */
     private static double ctoF(double cVal)
     {
-        double fVal = cVal * 9.0/5 + 32;
+       // double fVal = cVal * 9.0/5 + 32; // dont really need to do this...
 
-        return fVal;
+       // return fVal;
+       return  cVal * 9.0/5 + 32;  // here just return the double expression directly
     }
 
-    private static String getMessage()
+    private static String getMessage(Scanner in)
     {
+        String msg = "";
+        done = false;
+        do {
+            System.out.print("\nEnter the msg:");
+            msg = in.nextLine();
+            if(msg.length() > 0)
+            {
+                done = true;
+            }
+        }while (!done);
 
+       return msg;
     }
 
     private void printTempTable()
